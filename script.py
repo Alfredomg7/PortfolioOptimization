@@ -28,22 +28,36 @@ avg_daily_return = daily_returns.mean()
 correlation_matrix = daily_returns.corr()
 
 # Find optimal portfolios varying weights using randomization
-portfolios = []
-for i in range(10000): 
+num_portfolios = 10000
+results = np.zeros((4, num_portfolios))
+for i in range(num_portfolios): 
   weights = np.random.random(len(stocks_symbols))
   weights /= np.sum(weights)  
   portfolio_return = np.sum(weights * avg_daily_return)
   # Calculate portfolio risk using correlation matrix and weights
   portfolio_risk = np.dot(weights.T, np.dot(correlation_matrix, weights))
-  portfolios.append([portfolio_return, portfolio_risk])
+  
+  results[0, i] = portfolio_return
+  results[1, i] = portfolio_risk
+  results[2, i] = portfolio_return / portfolio_risk
+  results[3, i] = weights.mean()
 
 # Create a DataFrame of the calculated portfolios
-portfolios = pd.DataFrame(portfolios, columns=["Return", "Risk"])
+portfolios = pd.DataFrame(
+    results.T,
+    columns=["Return", "Risk", "Sharpe Ratio", "Weighted Mean"]
+)
+
+# Fin the portfolio with the highest Sharpe ratio
+max_sharpe_portfolio =  portfolios.iloc[portfolios["Sharpe Ratio"].idxmax()]
 
 # Plot efficient frontier by visualizing the portfolios' risk and return
 plt.figure(figsize=(10, 6))
-plt.scatter(portfolios["Risk"], portfolios["Return"], marker="o", s=10, alpha=0.3, color="#088274")
+plt.scatter(portfolios["Risk"], portfolios["Return"], c=portfolios["Sharpe Ratio"], cmap="viridis", marker="o", s=10, alpha=0.3)
+plt.scatter(max_sharpe_portfolio["Risk"], max_sharpe_portfolio["Return"], color="red", marker="*", s=100, label="Max Sharpe Ratio Portfolio")
 plt.xlabel("Risk")
 plt.ylabel("Daily Return")
-plt.title('Efficient Frontier')
+plt.title("Efficient Frontier with Sharpe Ratios")
+plt.colorbar(label="Sharpe Ratio")
+plt.legend()
 plt.show()
