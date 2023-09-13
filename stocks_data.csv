@@ -1,10 +1,31 @@
 company_name,symbol
 Apple,AAPL
 Microsoft,MSFT
-Alphabet(Google),GOOG
 Amazon,AMZN
-NVIDIA,NVDA
-Berkshire Hathaway,BRK-B
+Nvidia,NVDA
+Alphabet A,GOOGL
 Tesla,TSLA
+Alphabet C,GOOG
+Meta,META
+Berkshire Hathaway,BRK-B
 Eli Lilly,LLY
+Exxon Mobil,XOM
+Unitedhealth,UNH 
+Jpmorgan,JPM 
 Visa,V
+Jhonson & Jhonson,JNJ
+Procter & Gamble,PG 
+Broadcom,AVGO 
+Mastercard,MA 
+Home Depot,HD
+Chevron,CVX
+Merck,MRK 
+Abbvie,ABBV 
+Adobe,ADBE 
+Costco,COST 
+Pepsico,PEP 
+Cisco Systems,CSCO 
+Walmart,WMT 
+Coca Cola,KO
+Salesforce,CRM 
+Accenture,ACN
