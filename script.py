@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import yfinance as yf
+from matplotlib import pyplot as plt, ticker as mtick
 from datetime import date, timedelta
 
 # Load stocks symbols
@@ -24,6 +24,9 @@ for symbol in stocks_symbols:
 daily_returns = stocks_price.pct_change()
 avg_daily_return = daily_returns.mean()
 
+# Annualize returns
+annualized_returns = (1 + avg_daily_return) ** 252 - 1
+
 # Create correlation matrix to measure relationships between stock returns
 correlation_matrix = daily_returns.corr()
 
@@ -33,9 +36,10 @@ results = np.zeros((4, num_portfolios))
 for i in range(num_portfolios): 
   weights = np.random.random(len(stocks_symbols))
   weights /= np.sum(weights)  
-  portfolio_return = np.sum(weights * avg_daily_return)
+  portfolio_return = np.sum(weights * annualized_returns)
   # Calculate portfolio risk using correlation matrix and weights
   portfolio_risk = np.dot(weights.T, np.dot(correlation_matrix, weights))
+  portfolio_risk = np.sqrt(portfolio_risk)
   
   results[0, i] = portfolio_return
   results[1, i] = portfolio_risk
@@ -56,7 +60,9 @@ plt.figure(figsize=(10, 6))
 plt.scatter(portfolios["Risk"], portfolios["Return"], c=portfolios["Sharpe Ratio"], cmap="viridis", marker="o", s=10, alpha=0.3)
 plt.scatter(max_sharpe_portfolio["Risk"], max_sharpe_portfolio["Return"], color="red", marker="*", s=100, label="Max Sharpe Ratio Portfolio")
 plt.xlabel("Risk")
-plt.ylabel("Daily Return")
+plt.ylabel("Annualized Return")
+plt.gca().xaxis.set_major_formatter(mtick.PercentFormatter(1.0))  
+plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
 plt.title("Efficient Frontier with Sharpe Ratios")
 plt.colorbar(label="Sharpe Ratio")
 plt.legend()
