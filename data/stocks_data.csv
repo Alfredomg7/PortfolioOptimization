@@ -1,34 +1,41 @@
 company_name,symbol,sector
-Apple Inc,AAPL,Technology
+Apple Inc.,AAPL,Technology
 Microsoft Corporation,MSFT,Technology
+"	Alphabet Inc.",GOOG,Communication Services
+"	Amazon.com, Inc.",AMZN,Consumer Discretionary
 Nvidia Corporation,NVDA,Technology
-Alphabet Inc.,GOOG,Communication Services
-Meta Platforms,META,Communication Services
-Netflix,NFLX,Communication Services
-Amazon.com,AMZN,Consumer Discretionary
-Tesla,TSLA,Consumer Discretionary
-The Home Depot,HD,Consumer Discretionary
-"Berkshire Hathaway Inc.	",BRK-B,Financials
-Visa Inc.,V,Financials
+"	Tesla, Inc.",TSLA,Consumer Discretionary
+"	Meta Platforms, Inc.",META,Communication Services
+"	Berkshire Hathaway Inc.",BRK-B,Financials
+"	Visa Inc.",V,Financials
 JPMorgan Chase & Co.,JPM,Financials
-UnitedHealth Group Incorporated,UNH,Healthcare
-Eli Lilly and Company,LLY,Healthcare
-Johnson & Johnson,JNJ,Healthcare
+UnitedHealth Group Incorporated,UNH,Health Care
 Exxon Mobil Corporation,XOM,Energy
+Eli Lilly and Company,LLY,Health Care
+"	Walmart Inc.",WMT,Consumer Staples
+"	Johnson & Johnson	",JNJ,Health Care
+Mastercard Incorporated,MA,Financials
+Broadcom Inc.,AVGO,Technology
+"	The Procter & Gamble Company",PG,Consumer Staples
+"	The Home Depot, Inc.	",HD,Consumer Discretionary
+Oracle Corporation,ORCL,Technology
 Chevron Corporation,CVX,Energy
-ConocoPhillips,COP,Energy
-Walmart Inc.,WMT,Consumer Staples
-The Procter & Gamble Company,PG,Consumer Staples
-The Coca-Cola Company,KO,Consumer Staples
-United Parcel Service,UPS,Industrials
-RTX Corporation,RTX,Industrials
+"Merck & Co., Inc.",MRK,Health Care
+"	The Coca-Cola Company","KO	",Consumer Staples
+AbbVie Inc.,ABBV,Health Care
+Adobe Inc.,ADBE,Technology
+"	Bank of America Corporation",BAC,Financials
+"	salesforce.com, inc.",CRM,Technology
+McDonald's Corporation,MCD,Consumer Discretionary
+"	Cisco Systems, Inc.",CSCO,Technology
+Pfizer Inc.,PFE,Health Care
+"	Accenture plc",CAN,Technology
+"Netflix, Inc.",NFLX,Communication Services
+"	Linde plc",LIN,Materials
+"Advanced Micro Devices, Inc.",AMD,Technology
+"NextEra Energy, Inc.	",NEE,Utilities
+"	Prologis, Inc.",PLD,Real Estate
+"	United Parcel Service, Inc.",UPS,Industrials
+"	RTX Corporation",RTX,Industrials
 Honeywell International Inc.,HON,Industrials
-Prologis,PLD,Real Estate
-American Tower Corporation (REIT),AMT,Real Estate
-Equinix,EQIX,Real Estate
-Linde plc,LIN,Materials
-The Sherwin-Williams Company,SHW,Materials
-Air Products and Chemicals,APD,Materials
-NextEra Energy,NEE,Utilities
-The Southern Company,SO,Utilities
-Duke Energy Corporation,DUK,Utilities
+The Boeing Company,BA,Industrials
