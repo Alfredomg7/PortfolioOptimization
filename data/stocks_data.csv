@@ -1,0 +1,34 @@
+company_name,symbol,sector
+Apple Inc,AAPL,Technology
+Microsoft Corporation,MSFT,Technology
+Nvidia Corporation,NVDA,Technology
+Alphabet Inc.,GOOG,Communication Services
+Meta Platforms,META,Communication Services
+Netflix,NFLX,Communication Services
+Amazon.com,AMZN,Consumer Discretionary
+Tesla,TSLA,Consumer Discretionary
+The Home Depot,HD,Consumer Discretionary
+"Berkshire Hathaway Inc.	",BRK-B,Financials
+Visa Inc.,V,Financials
+JPMorgan Chase & Co.,JPM,Financials
+UnitedHealth Group Incorporated,UNH,Healthcare
+Eli Lilly and Company,LLY,Healthcare
+Johnson & Johnson,JNJ,Healthcare
+Exxon Mobil Corporation,XOM,Energy
+Chevron Corporation,CVX,Energy
+ConocoPhillips,COP,Energy
+Walmart Inc.,WMT,Consumer Staples
+The Procter & Gamble Company,PG,Consumer Staples
+The Coca-Cola Company,KO,Consumer Staples
+United Parcel Service,UPS,Industrials
+RTX Corporation,RTX,Industrials
+Honeywell International Inc.,HON,Industrials
+Prologis,PLD,Real Estate
+American Tower Corporation (REIT),AMT,Real Estate
+Equinix, Inc. (REIT),EQIX,Real Estate
+Linde plc,LIN,Materials
+The Sherwin-Williams Company,SHW,Materials
+Air Products and Chemicals, Inc.,APD,Materials
+NextEra Energy,NEE,Utilities
+The Southern Company,SO,Utilities
+Duke Energy Corporation,DUK,Utilities

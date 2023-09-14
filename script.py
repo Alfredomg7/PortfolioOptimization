@@ -5,11 +5,11 @@ from matplotlib import pyplot as plt, ticker as mtick
 from datetime import date, timedelta
 
 # Load stocks symbols
-stocks_data = pd.read_csv("stocks_data.csv")
+stocks_data = pd.read_csv("data/stocks_data.csv")
 stocks_symbols = stocks_data.symbol
 
 # Set date range for stock data
-years = 10
+years = 20
 end_date = pd.to_datetime(date.today())
 start_date = end_date - timedelta(days=years*365)
 
