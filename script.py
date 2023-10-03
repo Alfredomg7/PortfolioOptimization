@@ -8,6 +8,16 @@ from datetime import date, timedelta
 stocks_data = pd.read_csv("data/stocks_data.csv")
 stocks_symbols = stocks_data.symbol
 
+# Count the number of stocks in each sector
+sector_counts = stocks_data.sector.value_counts()
+
+# Create a pie chart of the stocks distribution by sector
+plt.figure(figsize=(8,8))
+plt.pie(sector_counts, labels=sector_counts.index, autopct="%1.1f%%", startangle=140)
+plt.title("Stock Distribution by Sector")
+plt.axis("equal")
+plt.show()
+
 # Set date range for stock data
 years = 20
 end_date = pd.to_datetime(date.today())
