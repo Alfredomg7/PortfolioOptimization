@@ -4,6 +4,7 @@ import yfinance as yf
 from matplotlib import pyplot as plt, ticker as mtick
 from datetime import date, timedelta
 from colors import sector_colors
+from portfolio_plotter import create_portfolio_figure
 
 # Load stocks symbols and sectors
 stocks_data = pd.read_csv("data/stocks_data.csv")
@@ -112,45 +113,30 @@ plt.colorbar(label="Sharpe Ratio")
 plt.legend(loc="lower right")
 plt.show()
 
-# Create figure for plot Max Sharpe Ratio Portfolio
-fig, axs = plt.subplots(1, 2, figsize=(18, 6))
+# Prepare data for Max Sharpe Ratio Portfolio
+max_sharpe_data = {
+    'sector_weights': max_sharpe_sector_weights,
+    'stock_weights': max_sharpe_stock_weights,
+}
 
-# Plot the pie chart for sector weights for the Max Sharpe Ratio Portfolio
-wedges, texts = axs[0].pie(max_sharpe_sector_weights.values, startangle=140, colors=[sector_colors[sector] for sector in max_sharpe_sector_weights.index])
-axs[0].set_title("Sector Weights - Max Sharpe Ratio Portfolio")
+# Plot weight distribution by sector, by stock and stats for the Max Sharpe Ratio Portfolio
+create_portfolio_figure(max_sharpe_data, max_sharpe_portfolio, "Max Sharpe Ratio Portfolio", stocks_symbols, symbol_to_sector)
 
-# Improve pie chart labels using a legend with percentage
-labels = [f'{label}: {value*100:.1f}%' for label, value in zip(max_sharpe_sector_weights.index, max_sharpe_sector_weights.values / max_sharpe_sector_weights.values.sum())]
-axs[0].legend(wedges, labels,
-          title="Sectors",
-          loc="center left",
-          bbox_to_anchor=(1, 0, 0.5, 1))
+# Prepare data for Max Return Portfolio
+max_return_data = {
+    'sector_weights': max_return_sector_weights,
+    'stock_weights': max_return_stock_weights,
+}
 
-# Sort the stocks by weights in descending order
-sorted_indexes = max_sharpe_stock_weights.argsort()[::-1]
-sorted_symbols = stocks_symbols[sorted_indexes]
-sorted_weights = max_sharpe_stock_weights[sorted_indexes]
+# Plot weight distribution by sector, by stock and stats for the Max Return Portfolio
+create_portfolio_figure(max_return_data, max_return_portfolio, "Max Return Portfolio", stocks_symbols, symbol_to_sector)
 
-# Get colors for each bar based on its sector
-bar_colors = [sector_colors[symbol_to_sector[symbol]] for symbol in sorted_symbols]
+# Prepare data for Min Risk Portfolio
+min_risk_data = {
+    'sector_weights': min_risk_sector_weights,
+    'stock_weights': min_risk_stock_weights,
+}
 
-# Plot the bar chart for stock weights for the Max Sharpe Ratio Portfolio
-bars = axs[1].bar(sorted_symbols, sorted_weights, color=bar_colors)
-axs[1].set_xlabel("Stocks")
-axs[1].set_ylabel("Weights")
-axs[1].set_title("Stock Weights - Max Sharpe Ratio Portfolio")
-axs[1].tick_params(axis='x', rotation=90)
+# Plot weight distribution by sector, by stock and stats for the Min Risk Portfolio
+create_portfolio_figure(min_risk_data, min_risk_portfolio, "Min Risk Portfolio", stocks_symbols, symbol_to_sector)
 
-# Format y-axis as percentage
-axs[1].get_yaxis().set_major_formatter(mtick.PercentFormatter(1.0))
-
-# Add portfolio information as text with values formatted as percentages
-portfolio_info = (f"Return: {max_sharpe_portfolio['Return']*100:.2f}%\n"
-                  f"Risk: {max_sharpe_portfolio['Risk']*100:.2f}%\n"
-                  f"Sharpe Ratio: {max_sharpe_portfolio['Sharpe Ratio']*100:.2f}%")
-
-fig.text(0.77, 0.9, portfolio_info, fontsize=12, verticalalignment='top', horizontalalignment='left',
-         bbox=dict(boxstyle="round,pad=0.3", edgecolor="black", facecolor="white"))
-
-plt.tight_layout()
-plt.show()
