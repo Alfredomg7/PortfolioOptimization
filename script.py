@@ -20,10 +20,9 @@ sector_counts = stocks_data.sector.value_counts()
 plt.figure(figsize=(8,8))
 plt.pie(sector_counts, labels=sector_counts.index, autopct="%1.1f%%", startangle=140, colors=[sector_colors[sector] for sector in sector_counts.index])
 plt.title("Stock Distribution by Sector", y=1.08) # Adjusted the y parameter to move title up
-plt.suptitle("Total Stocks: 40", y=1.08)
 plt.axis("equal")
 plt.show()
-"""
+
 # Set date range for stock data
 years = 20
 end_date = pd.to_datetime(date.today())
@@ -117,7 +116,7 @@ plt.show()
 fig, axs = plt.subplots(1, 2, figsize=(18, 6))
 
 # Plot the pie chart for sector weights for the Max Sharpe Ratio Portfolio
-wedges, texts = axs[0].pie(max_sharpe_sector_weights.values, startangle=140)
+wedges, texts = axs[0].pie(max_sharpe_sector_weights.values, startangle=140, colors=[sector_colors[sector] for sector in max_sharpe_sector_weights.index])
 axs[0].set_title("Sector Weights - Max Sharpe Ratio Portfolio")
 
 # Improve pie chart labels using a legend with percentage
@@ -132,8 +131,11 @@ sorted_indexes = max_sharpe_stock_weights.argsort()[::-1]
 sorted_symbols = stocks_symbols[sorted_indexes]
 sorted_weights = max_sharpe_stock_weights[sorted_indexes]
 
+# Get colors for each bar based on its sector
+bar_colors = [sector_colors[symbol_to_sector[symbol]] for symbol in sorted_symbols]
+
 # Plot the bar chart for stock weights for the Max Sharpe Ratio Portfolio
-bars = axs[1].bar(sorted_symbols, sorted_weights)
+bars = axs[1].bar(sorted_symbols, sorted_weights, color=bar_colors)
 axs[1].set_xlabel("Stocks")
 axs[1].set_ylabel("Weights")
 axs[1].set_title("Stock Weights - Max Sharpe Ratio Portfolio")
@@ -152,4 +154,3 @@ fig.text(0.77, 0.9, portfolio_info, fontsize=12, verticalalignment='top', horizo
 
 plt.tight_layout()
 plt.show()
-"""
