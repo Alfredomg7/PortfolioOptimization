@@ -3,6 +3,7 @@ import numpy as np
 import yfinance as yf
 from matplotlib import pyplot as plt, ticker as mtick
 from datetime import date, timedelta
+from colors import sector_colors
 
 # Load stocks symbols and sectors
 stocks_data = pd.read_csv("data/stocks_data.csv")
@@ -17,11 +18,12 @@ sector_counts = stocks_data.sector.value_counts()
 
 # Create a pie chart of the stocks distribution by sector
 plt.figure(figsize=(8,8))
-plt.pie(sector_counts, labels=sector_counts.index, autopct="%1.1f%%", startangle=140)
-plt.title("Stock Distribution by Sector")
+plt.pie(sector_counts, labels=sector_counts.index, autopct="%1.1f%%", startangle=140, colors=[sector_colors[sector] for sector in sector_counts.index])
+plt.title("Stock Distribution by Sector", y=1.08) # Adjusted the y parameter to move title up
+plt.suptitle("Total Stocks: 40", y=1.08)
 plt.axis("equal")
 plt.show()
-
+"""
 # Set date range for stock data
 years = 20
 end_date = pd.to_datetime(date.today())
@@ -150,3 +152,4 @@ fig.text(0.77, 0.9, portfolio_info, fontsize=12, verticalalignment='top', horizo
 
 plt.tight_layout()
 plt.show()
+"""
