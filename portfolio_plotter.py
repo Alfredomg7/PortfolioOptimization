@@ -1,5 +1,6 @@
 from matplotlib import pyplot as plt
 from colors import sector_colors
+
 # Function to create the figure for a given portfolio
 def create_portfolio_figure(portfolio_weights, portfolio_stats, title, stocks_symbols, symbol_to_sector):
     # Sort the sectors and stocks by weights in descending order for the pie and bar charts
@@ -40,9 +41,9 @@ def create_portfolio_figure(portfolio_weights, portfolio_stats, title, stocks_sy
     portfolio_info = (f"{title}\n"
                       f"Return: {portfolio_stats['Return']*100:.2f}%\n"
                       f"Risk: {portfolio_stats['Risk']*100:.2f}%\n"
-                      f"Sharpe Ratio: {portfolio_stats['Sharpe Ratio']:.4f}")
+                      f"Sharpe Ratio: {portfolio_stats['Sharpe Ratio']*100:.2f}%")
 
-    fig.text(0.92, 0.95, portfolio_info, fontsize=12, verticalalignment='top', horizontalalignment='left')
+    fig.text(0.85, 0.8, portfolio_info, fontsize=12, verticalalignment='top', horizontalalignment='left')
 
     plt.tight_layout()
     plt.show()
