@@ -25,7 +25,7 @@ plt.axis("equal")
 plt.show()
 
 # Set date range for stock data
-years = 20
+years = 10
 end_date = pd.to_datetime(date.today())
 start_date = end_date - timedelta(days=years*365)
 
