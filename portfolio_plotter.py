@@ -21,7 +21,7 @@ def create_portfolio_figure(portfolio_weights, portfolio_stats, title, stocks_sy
 
     # Plot the pie chart for sector weights with specific colors
     wedges, texts = axs[0].pie(sorted_sector_weights, startangle=140, colors=pie_colors)
-    axs[0].set_title(f"Sector Weights - {title}", y=1.1)
+    axs[0].set_title(f"Sector Weights - {title}")
 
     # Improve pie chart labels using a legend with percentage
     labels = [f'{label}: {value*100:.1f}%' for label, value in zip(sorted_sectors, sorted_sector_weights / sorted_sector_weights.sum())]
@@ -43,9 +43,13 @@ def create_portfolio_figure(portfolio_weights, portfolio_stats, title, stocks_sy
                       f"Risk: {portfolio_stats['Risk']*100:.2f}%\n"
                       f"Sharpe Ratio: {portfolio_stats['Sharpe Ratio']*100:.2f}%")
 
-    fig.text(0.85, 0.8, portfolio_info, fontsize=12, verticalalignment='top', horizontalalignment='left')
+    fig.text(0.8, 0.8, portfolio_info, fontsize=12, verticalalignment='top', horizontalalignment='left')
 
+    # Adjust subplots layout
     plt.tight_layout()
+    plt.subplots_adjust(wspace=0.7)
+
+    # Print figure
     plt.show()
 
 
